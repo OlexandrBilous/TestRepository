@@ -7,13 +7,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 
-<h1>Полная кредитная сетка</h1>
+<h1>Кредитная сетка</h1>
 <div class="container">
 <a class="btn btn-secondary" href="http://bankproject.ua/addTarif" role="button">Добавить новый тариф для банка</a>
+    <a class="btn btn-secondary" href="http://bankproject.ua" role="button">Отобразить полную сетку</a>
     </div>
-    <div class="container">
+        <div class="container">
 @isset($period)
-    <h2>Показания за период {{ $period }}</h2>
+    <h2>Сортировка по запросу: {{ $period }}</h2>
 @endisset
 <table class="table table-dark">
     <tr>

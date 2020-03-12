@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBankPost;
+use App\Http\Requests\StoreCredit_typePost;
 use App\Models\Bank;
 use App\Http\Requests\StoreBlogPost;
+use App\Models\Credit_type;
+use App\Models\Tarif;
 use Illuminate\Http\Request;
 
 class BankController extends Controller
@@ -18,7 +22,17 @@ class BankController extends Controller
     }
     public function saveTarif(StoreBlogPost $request)
     {
+        $tarif = Tarif::create($request->validated());
+        return redirect()->back();
+    }
+    public function saveBank(StoreBankPost $request)
+    {
         $tarif = Bank::create($request->validated());
+        return redirect()->back();
+    }
+    public function saveCredit_type(StoreCredit_typePost $request)
+    {
+        $tarif = Credit_type::create($request->validated());
         return redirect()->back();
     }
     public function showTarif(Bank $banks)

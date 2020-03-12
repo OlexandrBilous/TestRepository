@@ -16,6 +16,14 @@ Route::post('/saveTarif', [
     'as'=>'saveTarif',
     'uses'=>'BankController@saveTarif'
 ]);
+Route::post('/saveBank', [
+    'as'=>'saveBank',
+    'uses'=>'BankController@saveBank'
+]);
+Route::post('/saveCredit_type', [
+    'as'=>'saveCredit_type',
+    'uses'=>'BankController@saveCredit_type'
+]);
 
 Route::get('/addTarif', [
     'as'=>'addTarif',

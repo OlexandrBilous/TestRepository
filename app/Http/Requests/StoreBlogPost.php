@@ -24,8 +24,6 @@ class StoreBlogPost extends FormRequest
     public function rules()
     {
         return [
-            'bank' => 'required|max:100|min:3',
-            'credit_type' => 'required|max:100|min:3',
             'period' => 'required|digits_between:1,2',
             'Month_pay' => 'required|digits_between:1,10',
             'Body_pay' => 'required|digits_between: 1,10',
@@ -33,3 +31,11 @@ class StoreBlogPost extends FormRequest
             ];
     }
 }
+/*public function messages()
+    {
+        return [
+            'comment.required' => 'Необходимо указать комментарий',
+            'comment.min' => 'Необходимо написать больше 5 символов',
+            'comment.max' => 'Вы превысили заданный размер (больше 255 символов)',
+        ];
+    }*/
