@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCreditTypeTable extends Migration
+class AddTarifTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class AddCreditTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('credit_type', function (Blueprint $table) {
+        Schema::create('tarifs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('credit_type_name');
+            $table->bigInteger('period');
+            $table->bigInteger('month_pay');
+            $table->bigInteger('body_pay');
+            $table->bigInteger('percent');
         });
     }
 
@@ -27,6 +30,6 @@ class AddCreditTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('credit_type');
+        Schema::dropIfExists('tarifs');
     }
 }

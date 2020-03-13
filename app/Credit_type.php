@@ -8,10 +8,10 @@ class Credit_type extends Model
 {
     protected $fillable = ['credit_type_name'];
 
-    public function bank()
+
+    public function tarif()
     {
-        // ?????????
-        return $this->belongsTo(Bank::class);
+        return $this->belongsTo(Tarif::class);
     }
 //    protected $alias = 'articleOne';
 

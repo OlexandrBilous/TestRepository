@@ -7,12 +7,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <div class="container">
-    <form method="post" action="{{ route('saveTarif') }}">
+    <form method="post" action="{{ url('saveBank') }}">
+        @method('POST')
+        @csrf
         <div>
             <h3>Добавление нового банка</h3>
             <div class="form-group">
-                <input type="text" class="form-control {{$errors->has('bank') ? 'is-invalid' : ''}}" name="bank"
-                       placeholder="Название банка" value="{{old('bank')}}"
+                <input type="text" class="form-control {{$errors->has('bank_name') ? 'is-invalid' : ''}}" name="bank_name"
+                       placeholder="Название банка" value="{{old('bank_name')}}"
                        aria-label="Username" aria-describedby="addon-wrapping">
                 @error('bank')
                 <div class="text-danger">{{ $message }}</div>
@@ -20,7 +22,7 @@
             </div>
 
             <div class="form-group">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+{{--                <input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
                 <input class="btn btn-primary" type="submit" value="Добавить">
             </div>
         </div>

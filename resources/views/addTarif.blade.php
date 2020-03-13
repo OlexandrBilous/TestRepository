@@ -27,20 +27,36 @@
             @enderror
         </div>
         <div class="form-group">
-            <input type="text" class="form-control {{$errors->has('Month_pay') ? 'is-invalid' : ''}}" name="Month_pay"
-                   placeholder="Оплата за месяц" value="{{old('Month_pay')}}"
+            <input type="text" class="form-control {{$errors->has('month_pay') ? 'is-invalid' : ''}}" name="month_pay"
+                   placeholder="Оплата за месяц" value="{{old('month_pay')}}"
                    aria-label="Username" aria-describedby="addon-wrapping">
             @error('Month_pay')
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
-            <input type="text" class="form-control {{$errors->has('Body_pay') ? 'is-invalid' : ''}}" name="Body_pay"
-                   placeholder="Оплата целиком" value="{{old('Body_pay')}}"
+            <input type="text" class="form-control {{$errors->has('body_pay') ? 'is-invalid' : ''}}" name="body_pay"
+                   placeholder="Оплата целиком" value="{{old('body_pay')}}"
                    aria-label="Username" aria-describedby="addon-wrapping">
-            @error('Body_pay')
+            @error('body_pay')
             <div class="text-danger">{{ $message }}</div>
             @enderror
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="bank_id">
+                @foreach($bank as $bank)
+                <option value="{{ $bank->id }}">{{$bank->bank_name}}</option>
+                @endforeach
+            </select>
+
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="credit_type_id">
+                @foreach($credit_type as $credit_type)
+                    <option value="{{ $credit_type->id }}">{{$credit_type->credit_type_name}}</option>
+                @endforeach
+            </select>
+
         </div>
         <div class="form-group">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">

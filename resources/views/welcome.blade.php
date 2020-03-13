@@ -9,12 +9,14 @@
 
 <h1>Кредитная сетка</h1>
 <div class="container">
-<a class="btn btn-secondary" href="http://bankproject.ua/addTarif" role="button">Добавить новый тариф для банка</a>
+<a class="btn btn-secondary" href="http://bankproject.ua/addTarif" role="button">Добавить новый тариф</a>
+    <a class="btn btn-secondary" href="http://bankproject.ua/addBank" role="button">Добавить новый банк</a>
+    <a class="btn btn-secondary" href="http://bankproject.ua/addCredit_type" role="button">Добавить новый тип кредитования</a>
     <a class="btn btn-secondary" href="http://bankproject.ua" role="button">Отобразить полную сетку</a>
     </div>
         <div class="container">
-@isset($period)
-    <h2>Сортировка по запросу: {{ $period }}</h2>
+@isset($param)
+    <h2>Сортировка по запросу: {{ $param }}</h2>
 @endisset
 <table class="table table-dark">
     <tr>
@@ -25,14 +27,15 @@
         <th>Единовременная плата</th>
         <th>Процент</th>
     </tr>
-    @foreach($bank as $bank)
+    @foreach($tarif as $tarif)
         <tr>
-            <td>{{$bank->bank}}</td>
-            <td>{{$bank->credit_type}}</td>
-            <td>{{$bank->period}}</td>
-            <td>{{$bank->Month_pay}}</td>
-            <td>{{$bank->Body_pay}}</td>
-            <td>{{$bank->percent}}</td>
+
+            <td>{{$tarif->bank->bank_name}}</td>
+            <td>{{$tarif->credit_type->credit_type_name}}</td>
+            <td>{{$tarif->period}}</td>
+            <td>{{$tarif->month_pay}}</td>
+            <td>{{$tarif->body_pay}}</td>
+            <td>{{$tarif->percent}}</td>
 
         </tr>
     @endforeach
@@ -40,28 +43,10 @@
 </div>
 <div class="container">
 <h2>Поиск по фильтру</h2>
-{{--    <div class="form-group">--}}
-{{--        <label for="exampleFormControlSelect1">Фильтровать по:</label>--}}
-{{--        <select name="select" class="form-control" id="exampleFormControlSelect1">--}}
-{{--            <option value="3">tesr банка</option>--}}
-{{--            <option  value='2'>Типу кредита</option>--}}
-{{--            <option  value='3'>Граничному периоду</option>--}}
-{{--            <option  value='4'>Проценту</option>--}}
-{{--            <option  value='5'>Оплате за месяц</option>--}}
-{{--            <option  value='6'>Оплате целиком</option>--}}
-{{--        </select>--}}
-{{--    </div>--}}
-<h3>Введите значение</h3>
-    <div class="row">
-        <div class="col">
-
 <form  name="postForm" method="GET" action="{{ route('filterTraif') }}">
     <div class="form-group">
         <label for="exampleFormControlSelect1">Фильтровать по:</label>
-        <select name="select" class="form-control" id="exampleFormControlSelect1">
-{{--            <option value="1">Название банка</option>--}}
-{{--            <option  value='2'>Типу кредита</option>--}}
-
+        <select name="variables" class="form-control" id="exampleFormControlSelect1">
             <option  value='1'>Граничному периоду</option>
             <option  value='2'>Проценту</option>
             <option  value='3'>Оплате за месяц</option>
@@ -70,7 +55,7 @@
             <option  value='6'>Типу кредита</option>
         </select>
     </div>
-    <input class="form-control"    name="test"><br>
+    <input class="form-control"    name="filter"><br>
     <input class="form-control"  type="submit" >
 </form>
         </div>

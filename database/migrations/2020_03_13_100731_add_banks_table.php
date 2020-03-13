@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTarifesTable extends Migration
+class AddBanksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class AddTarifesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tarifes', function (Blueprint $table) {
+        Schema::create('banks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->bigInteger('period');
-            $table->bigInteger('month_pay');
-            $table->bigInteger('body_pay');
-            $table->bigInteger('percent');
-            //            $table->string('bank_id');
+            $table->string('bank_name');
+//
         });
     }
 
@@ -31,6 +28,6 @@ class AddTarifesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tarifes');
+        Schema::dropIfExists('banks');
     }
 }

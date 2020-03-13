@@ -25,9 +25,11 @@ class StoreBlogPost extends FormRequest
     {
         return [
             'period' => 'required|digits_between:1,2',
-            'Month_pay' => 'required|digits_between:1,10',
-            'Body_pay' => 'required|digits_between: 1,10',
+            'month_pay' => 'required|digits_between:1,10',
+            'body_pay' => 'required|digits_between: 1,10',
             'percent' => 'required|digits_between:1,3',
+            'bank_id' => 'required',
+            'credit_type_id' => 'required',
             ];
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Bank;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,7 @@ Route::post('/saveBank', [
     'as'=>'saveBank',
     'uses'=>'BankController@saveBank'
 ]);
+
 Route::post('/saveCredit_type', [
     'as'=>'saveCredit_type',
     'uses'=>'BankController@saveCredit_type'
@@ -28,6 +31,14 @@ Route::post('/saveCredit_type', [
 Route::get('/addTarif', [
     'as'=>'addTarif',
     'uses'=>'BankController@addTarif'
+]);
+Route::get('/addBank', [
+    'as'=>'addBank',
+    'uses'=>'BankController@addBank'
+]);
+Route::get('/addCredit_type', [
+    'as'=>'addCredit_type',
+    'uses'=>'BankController@addCredit_type'
 ]);
 Route::get('/' , [
     'as' => 'showTarif',
