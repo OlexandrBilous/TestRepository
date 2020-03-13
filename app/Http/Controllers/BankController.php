@@ -137,12 +137,13 @@ class BankController extends Controller
                 }
                 break;
             case 5:
-                $param = (int)$request->input('filter');
+                $param = $request->get('filter');
                 $tarif = Tarif::query();
                 $bank = Bank::query();
                 $credit_type = Credit_type::query();
-                if ($param != null) {
-                    $tarif->where('bank_id', '=', $param);
+                if ($param != null) {;
+                    $tarif->leftJoin('banks', 'tarifs.bank_id', '=', 'banks.id')
+                    ->where('banks.bank_name', 'like', '%' . $param  . '%');
                     return view('welcome',
                         [
                             'tarif' => $tarif->get(),
