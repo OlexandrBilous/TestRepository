@@ -75,11 +75,15 @@ class BankController extends Controller
         $tarif = new Tarif();
         $filterData=$tarif->filterValues($request);
 
+        if (array_key_exists('Введите корректное значение', $filterData)){
+            return redirect('/')->with('Введите корректное значение', $filterData['Введите корректное значение'] );
+        } else{
+            return view('welcome',
+                [
+                    'tarif' => $filterData[0],
+                    'param' => $filterData[1],
+                ]);
+        }
 
-        return view('welcome',
-            [
-                'tarif' => $filterData[0],
-                'param' => $filterData[1],
-            ]);
     }
 }

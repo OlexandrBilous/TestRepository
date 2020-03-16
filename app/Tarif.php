@@ -30,18 +30,36 @@ class Tarif extends Model
     {
         $rule = $request->input('variables');
         $param = $request->input('filter');
+        $error = '';
         switch ($rule) {
             case 1:
-                $filtrCollection=$this->sortByPeriod($param);
+                if (ctype_digit($param)) {
+                    $filtrCollection = $this->sortByPeriod($param);
+                } else {
+                    $error = 'Введите корректное значение';
+                }
+
                 break;
             case 2:
+                if (ctype_digit($param)) {
                 $filtrCollection=$this->sortByPercent($param);
+                } else {
+                    $error = 'Введите корректное значение';
+                }
                 break;
             case 3:
+                if (ctype_digit($param)) {
                 $filtrCollection=$this->sortByMonthPay($param);
+                } else {
+                    $error = 'Введите корректное значение';
+                }
                 break;
             case 4:
+                 if (ctype_digit($param)) {
                 $filtrCollection=$this->sortByBodyPay($param);
+                 } else {
+                     $error = 'Введите корректное значение';
+                 }
                 break;
             case 5:
                 $filtrCollection=$this->sortByBankName($param);
@@ -50,7 +68,13 @@ class Tarif extends Model
                 $filtrCollection= $this->sortByTypeCredit($param);
                 break;
         }
-        return [$filtrCollection, $param];
+
+        if ($error == ''){
+            return [$filtrCollection, $param];
+        } else{
+            return ['Введите корректное значение' => $error];
+        }
+
 
     }
 

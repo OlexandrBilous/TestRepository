@@ -8,6 +8,14 @@
 </head>
 
 <h1>Кредитная сетка</h1>
+@if(session()->has('Введите корректное значение'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session()->get('Введите корректное значение') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 <div class="container">
 <a class="btn btn-secondary" href="http://bankproject.ua/addTarif" role="button">Добавить новый тариф</a>
     <a class="btn btn-secondary" href="http://bankproject.ua/addBank" role="button">Добавить новый банк</a>
