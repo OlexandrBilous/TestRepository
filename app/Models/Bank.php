@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Requests\StoreBankPost;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +22,13 @@ class Bank extends Model
     {
         return $this->belongsTo(Tarif::class);
     }
+    public function saveBank($request) {
+        Bank::create($request->validated());
+    }
 
+//    public static function getAll(){
+//        return self::all();
+//    }
 
 
 }

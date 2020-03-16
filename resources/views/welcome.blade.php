@@ -50,7 +50,7 @@
             <option  value='1'>Граничному периоду</option>
             <option  value='2'>Проценту</option>
             <option  value='3'>Оплате за месяц</option>
-            <option  value='4'>Оплате целиком</option>
+            <option  value='4'>Единовременной оплате</option>
             <option  value='5'>Названию банка</option>
             <option  value='6'>Типу кредита</option>
         </select>
@@ -59,8 +59,8 @@
     <input class="form-control"  type="submit" >
 </form>
         </div>
-    </div>
-</div>
+
+
 {{--<div class="container">--}}
 {{--<a class="btn btn-primary" href="http://bankproject.ua/addTarif" role="button">Добавить новый тариф для банка</a>--}}
 {{--    </div>--}}

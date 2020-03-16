@@ -7,11 +7,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <div class="container">
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
 <form method="post" action="{{ route('saveTarif') }}">
     <div>
         <h3>Добавление тарифа</h3>
         <div class="form-group">
-            <input type="text" class="form-control {{$errors->has('period') ? 'is-invalid' : ''}}" name="period"
+            <input type="number" class="form-control {{$errors->has('period') ? 'is-invalid' : ''}}" name="period"
                    placeholder="Период" value="{{old('period')}}"
                    aria-label="Username" aria-describedby="addon-wrapping">
             @error('period')
@@ -19,7 +24,7 @@
             @enderror
         </div>
         <div class="form-group">
-            <input type="text" class="form-control {{$errors->has('percent') ? 'is-invalid' : ''}}" name="percent"
+            <input type="number" class="form-control {{$errors->has('percent') ? 'is-invalid' : ''}}" name="percent"
                    placeholder="Процент" value="{{old('percent')}}"
                    aria-label="Username" aria-describedby="addon-wrapping">
             @error('percent')
@@ -27,15 +32,15 @@
             @enderror
         </div>
         <div class="form-group">
-            <input type="text" class="form-control {{$errors->has('month_pay') ? 'is-invalid' : ''}}" name="month_pay"
+            <input type="number" class="form-control {{$errors->has('month_pay') ? 'is-invalid' : ''}}" name="month_pay"
                    placeholder="Оплата за месяц" value="{{old('month_pay')}}"
                    aria-label="Username" aria-describedby="addon-wrapping">
-            @error('Month_pay')
+            @error('month_pay')
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
         <div class="form-group">
-            <input type="text" class="form-control {{$errors->has('body_pay') ? 'is-invalid' : ''}}" name="body_pay"
+            <input type="number" class="form-control {{$errors->has('body_pay') ? 'is-invalid' : ''}}" name="body_pay"
                    placeholder="Оплата целиком" value="{{old('body_pay')}}"
                    aria-label="Username" aria-describedby="addon-wrapping">
             @error('body_pay')

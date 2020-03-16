@@ -7,6 +7,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <div class="container">
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
     <form method="post" action="{{ url('saveBank') }}">
         @method('POST')
         @csrf
@@ -16,7 +21,7 @@
                 <input type="text" class="form-control {{$errors->has('bank_name') ? 'is-invalid' : ''}}" name="bank_name"
                        placeholder="Название банка" value="{{old('bank_name')}}"
                        aria-label="Username" aria-describedby="addon-wrapping">
-                @error('bank')
+                @error('bank_name')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
